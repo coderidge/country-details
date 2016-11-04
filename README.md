@@ -5,12 +5,11 @@ A Symfony 3 project
 
 2/ Database schema included further down
 
-## TODO ### 
+TODO 
 
-Different language formats causing problems inserting in some cases, needs to be investigated. I don't have much experience which other syntax these as yet. 
+Different language formats causing problems inserting in some cases, needs to be investigated. I don't have experience with dealing with this syntax. 
 
-Creating the apis from the database requires more work.  To create a tree of json returned with countries, and translations.  Currently just returned main details.
-
+Creating the apis from the database requires more work.  To create a tree of json returned for countries and the data from related tables.  Currently just returned main details.
 
 
 Schema 
