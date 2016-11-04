@@ -21,15 +21,11 @@ class DefaultController extends Controller
         $results = $client->get('https://restcountries.eu/rest/v1/all');
         
         $frombody = json_decode($results->getBody(),true);
-       
-        //var_dump (json_decode($frombody,true));
+              
        
         foreach($frombody as $body) { 
             // enter return id
-        echo $body['name'];
-        echo $body['topLevelDomain'][0];
-        
-       
+                     
         
         $sql="INSERT INTO country_details (country_name,domain_tld,lat,lng,ISO2,ISO3) values(?,?,?,?,?,?)";
     
@@ -66,11 +62,8 @@ class DefaultController extends Controller
                 $data[] = "(" . addslashes($lastid) . "," .  "'$trans'"  . ")";    }
 
                 $thedata = implode(",",$data) ;
-
-                echo $thedata;
-
+                
                 $sql2 = "INSERT INTO samknows.translations (country_id,translation) values $thedata"; 
-
 
                 $statement2 = $connection2->prepare($sql2);           
 
@@ -79,7 +72,7 @@ class DefaultController extends Controller
         
                         // borders 
                         foreach($body['borders'] as $bord) { 
-                                echo $bord;
+                             
                         $data2[] = "(" . addslashes($lastid) . "," .  "'$bord'"  . ")";    }
 
                         $borderdata = implode(",",$data2) ;
@@ -91,9 +84,9 @@ class DefaultController extends Controller
                         $statement3->execute();   
 
             
-                                echo '<br>';
+                                
                                 foreach($body['languages'] as $lang) { 
-                                echo $lang;
+                                
 
                                 $data3[] =  "(" . addslashes($lastid) . "," .  "'$lang'"  . ")";    }
 
@@ -106,14 +99,10 @@ class DefaultController extends Controller
                                 $statement4->execute();      
                 
            
-                 echo '<br>';
-                echo '<br>';
-                  echo '<br>';
+            
         }
         
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ]);
+       
     }
     
     
